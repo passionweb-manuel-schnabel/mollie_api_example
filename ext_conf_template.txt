@@ -1,0 +1,2 @@
+# cat=mollie; type=string; label=Mollie API Key
+mollieApiKey =

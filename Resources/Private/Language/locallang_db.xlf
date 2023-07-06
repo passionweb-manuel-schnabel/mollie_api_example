@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:mollie_api/Resources/Private/Language/locallang_db" date="2023-05-19T13:34:38Z" product-name="mollie_api">
+		<header/>
+		<body>
+			<trans-unit id="plugin_mollie_payment.name" resname="plugin_mollie_payment.name">
+				<source>Example payment with Mollie</source>
+			</trans-unit>
+			<trans-unit id="plugin_mollie_payment.description" resname="plugin_mollie_payment.description">
+				<source>Adds an example payment which uses the Mollie API </source>
+			</trans-unit>
+			<trans-unit id="plugin_mollie_paymentreturn.name" resname="plugin_mollie_paymentreturn.name">
+                <source>Return of Mollie payment</source>
+            </trans-unit>
+            <trans-unit id="plugin_mollie_paymentreturn.description" resname="plugin_mollie_paymentreturn.description">
+                <source>Handles the return of Mollie payment</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>
