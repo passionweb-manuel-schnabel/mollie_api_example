@@ -19,9 +19,20 @@ Add via composer:
 
 This example uses the Mollie API and the corresponding composer package mollie/mollie-api-php.
 
+## Simple RouteEnhancer
+
+Add the following snippet to the `routeEnhancers` section within your `config.yaml`:
+
+    MollieApiPaymentReturn:
+      type: Simple
+      routePath: '/{order_id}'
+      requirements:
+        order_id: '[a-zA-Z0-9].*'
+      _arguments: {}
+
 ## Frontend configuration "enforceValidation"
 
-If this settings is active you need to add the "order_id" parameter to the "excludedParameters"
+If this setting is active you need to add the `order_id` parameter to the `excludedParameters`
 if you want to use exactly the code snippets from this example repository.
 
     'cacheHash' => [
@@ -31,8 +42,7 @@ if you want to use exactly the code snippets from this example repository.
         ],
     ],
 
-Otherwise you can build
-an Extbase RouteEnhancer, generate the uri for the Mollie API request and add the paremeter to the
+Otherwise, you can build an Extbase RouteEnhancer, generate the uri for the Mollie API request and add the parameter to the
 `paymentreturnAction` within the `MollieController`.
 
 ## Extension settings
@@ -45,6 +55,13 @@ There are the following extension settings available.
     mollieApiKey = YOUR_API_KEY
 
 Enter your Mollie API key.
+
+### `successPid`
+
+    # cat=mollie; type=string; label=PID of payment success page
+    successPid =
+
+Enter the page id of your payment success page.
 
 ## Troubleshooting and logging
 
