@@ -6,6 +6,7 @@ namespace Passionweb\MollieApi\Controller;
 use Passionweb\MollieApi\Service\MollieService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -14,6 +15,7 @@ class MollieController extends ActionController
 {
     public function __construct(
         protected MollieService $mollieService,
+        protected string $successPid,
         protected LoggerInterface $logger
     )
     {
@@ -51,7 +53,7 @@ class MollieController extends ActionController
         // get order by order_id and do additional steps to handle the payment
         if(array_key_exists('order_id', $this->request->getAttribute('routing')->getArguments())) {
             // payment succeeded
-            if($this->request->getAttribute('routing')->getPageId() === 9) {
+            if($this->request->getAttribute('routing')->getPageId() === (int)$this->successPid) {
                 $this->view->assign('success', true);
             }
             // payment failed

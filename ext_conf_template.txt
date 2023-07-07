@@ -1,2 +1,4 @@
 # cat=mollie; type=string; label=Mollie API Key
 mollieApiKey =
+# cat=mollie; type=string; label=PID of payment success page
+successPid =

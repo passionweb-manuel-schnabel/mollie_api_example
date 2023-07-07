@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use Passionweb\MollieApi\Service\MollieService;
+use Passionweb\MollieApi\Controller\MollieController;
 
 return static function (ContainerConfigurator $containerConfigurator, ContainerBuilder $containerBuilder): void {
     $services = $containerConfigurator->services();
@@ -25,6 +26,15 @@ return static function (ContainerConfigurator $containerConfigurator, ContainerB
             [
                 'mollie_api',
                 'mollieApiKey'
+            ]
+        );
+
+    $services->set('ExtConf.successPid', 'string')
+        ->factory([service(ExtensionConfiguration::class), 'get'])
+        ->args(
+            [
+                'mollie_api',
+                'successPid'
             ]
         );
 
@@ -48,4 +58,7 @@ return static function (ContainerConfigurator $containerConfigurator, ContainerB
             ]
         )
         ->public();
+
+    $services->set(MollieController::class)
+        ->arg('$successPid', service('ExtConf.successPid'));
 };
